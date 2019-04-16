@@ -1,13 +1,40 @@
 <html>
+
 <head>
-<title>sample html</title>
-<style>
-h1{
-color:red;
-}
-</style>
+    <title>Title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/css/uikit.min.css" />
+    <script src="/static/js/uikit.min.js"></script>
+    <script src="/static/js/uikit-icons.min.js"></script>
 </head>
+
 <body>
-<h1>Hello html world!</h1>
+    <div class="uk-container uk-width-1-2@m uk-width-1-1@s uk-section">
+            <div class="uk-card uk-card-default uk-card-body uk-animation-slide-top-small">
+            <form action="/" method="POST">
+                <fieldset class="uk-fieldset">
+                    <legend class="uk-legend">文章判定システム</legend>
+                    <p>入力された文章が物語からとってきた文章なのか、ニュース記事からとってきた文章なのか　をカウンタベースの自然言語処理で判定します。</p>
+                    <div class="uk-margin">
+                        <textarea id="textarea" class="uk-textarea" rows="5" placeholder="Textarea" name="sentence"></textarea>
+                    </div>
+                </fieldset>
+                <div class="uk-padding">
+                    <button type="submit" class="uk-button uk-button-primary">判定！</button>
+                </div>
+            </form>
+            <p id="if-too-short-or-long"></p>
+        </div>
+    </div>
+    <script>
+        textarea.addEventListener('change',function(){
+            console.log(this.value.length)
+            if(this.value.length<100){
+                document.getElementById('if-too-short-or-long').innerText="テキストが100字を満たしていません。正確に判定できない可能性があります。"
+            }
+        })
+    </script>
 </body>
+
 </html>

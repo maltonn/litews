@@ -1,0 +1,48 @@
+<html>
+
+<head>
+    <title>結果</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/css/uikit.min.css" />
+    <script src="/static/js/uikit.min.js"></script>
+    <script src="/static/js/uikit-icons.min.js"></script>
+</head>
+
+<body style="overflow:hidden">
+    <div class="uk-container uk-width-1-2@m uk-width-1-1@s uk-section">
+            <div class="uk-card uk-card-default uk-card-body uk-animation-slide-top-small">
+            <form action="/" method="POST">
+                <fieldset class="uk-fieldset">
+                    <legend class="uk-legend">結果</legend>
+                    <div class="uk-margin">
+                        <span>あなたの入力した文章は</span>
+                        <h1 class="uk-margin-small">{{result}}</h1><span>でしょう</span>
+                    </div>
+                        <div class="uk-margin">
+                        <textarea id="textarea" class="uk-textarea" rows="5" placeholder="Textarea" name="sentence">{{sentence}}</textarea>
+                    </div>
+                </fieldset>
+                <div class="uk-padding">
+                    <button type="submit" class="uk-button uk-button-primary">再判定！</button>
+                </div>
+            </form>
+            <p id="if-too-short-or-long"></p>
+        </div>
+    </div>
+    <script>
+            textarea.addEventListener('keyup',function(){
+                len=this.value.length
+                warning=document.getElementById('if-too-short-or-long')
+                if(len<100){
+                    warning.innerText="テキストが100字を満たしていません。正確に判定できない可能性があります。（現在"+len+"字）"
+                }else if(len>1000){
+                    warning.innerText="テキストが1000字を超えています。判定に時間がかかる場合があります。（現在"+len+"字）"
+                }else{
+                    warning.innerText="現在"+len+"字"
+                }
+            })
+    </script>
+</body>
+
+</html>
