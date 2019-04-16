@@ -5,6 +5,10 @@ t = Tokenizer()
 app = Flask(__name__)
 
 
+@app.route("/a")
+def kari():
+    return ' /a is success!'
+
 @app.route("/", methods=["GET", "POST"])
 def Main():
     print(request.method)
@@ -29,6 +33,5 @@ def Main():
 
 
 if __name__ == "__main__":
-    #    app.run()
+    app.run()
     port = int(os.getenv("PORT", 5000))
-    app.run(host="0.0.0.0", port=port)
